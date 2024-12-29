@@ -135,3 +135,21 @@ fun OnLoading(modifier: Modifier = Modifier){
     )
 }
 
+//the home screen displaying error message with re-attempt button
+@Composable
+fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier){
+    Column (
+        modifier = modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Image(
+            painter = painterResource(id = R.drawable.error), contentDescription = ""
+        )
+        Text(text = stringResource(R.string.loading_failed), modifier = Modifier.padding(16.dp))
+        Button(onClick = retryAction) {
+            Text(stringResource(R.string.retry))
+        }
+    }
+}
+
