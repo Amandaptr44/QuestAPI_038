@@ -179,3 +179,51 @@ fun MhsLayout(
     }
 }
 
+@Composable
+fun MhsCard(
+    mahasiswa: Mahasiswa,
+    modifier: Modifier = Modifier,
+    ondeleteClick: (Mahasiswa) -> Unit = {}
+){
+    Card (
+        modifier = modifier,
+        shape = MaterialTheme.shapes.medium,
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+    ){
+        Column (
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ){
+            Row (
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                Text(
+                    text = mahasiswa.nama,
+                    style = MaterialTheme.typography.titleLarge,
+                )
+                Spacer(Modifier.weight(1f))
+                IconButton(onClick = { ondeleteClick(mahasiswa)}){
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = null,
+                    )
+                }
+
+                Text(
+                    text = mahasiswa.nim,
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
+
+            Text(
+                text = mahasiswa.kelas,
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = mahasiswa.alamat,
+                style = MaterialTheme.typography.titleMedium
+            )
+        }
+    }
+}
