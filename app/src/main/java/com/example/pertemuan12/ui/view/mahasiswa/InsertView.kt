@@ -55,3 +55,21 @@ fun EntryMhsScreen(
             )
         }
     ){
+            innerPadding ->
+        EntryBody(
+            insertUiState = viewModel.uiState,
+            onSiswaValueChange = viewModel::updateInsertMhsState,
+            onSaveClick = {
+                coroutineScope.launch{
+                    viewModel.insertMhs()
+                    navigateBack()
+                }
+            },
+            modifier = Modifier
+                .padding(innerPadding)
+                .verticalScroll(rememberScrollState())
+                .fillMaxWidth()
+        )
+    }
+}
+
