@@ -12,3 +12,5 @@ object PenyediaViewModel{
         initializer { InsertViewModel(aplikasiKontak().container.kontakRepository) }
     }
 }
+fun CreationExtras.aplikasiKontak(): MahasiswaAplications =
+    (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as MahasiswaAplications)
