@@ -153,3 +153,29 @@ fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier){
     }
 }
 
+@Composable
+fun MhsLayout(
+    mahasiswa: List<Mahasiswa>,
+    modifier: Modifier = Modifier,
+    ondetailClick: (Mahasiswa) -> Unit,
+    ondeleteClick: (Mahasiswa) -> Unit = {}
+){
+    LazyColumn (
+        modifier = Modifier,
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ){
+        items(mahasiswa){kontak ->
+            MhsCard(
+                mahasiswa = kontak,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { ondetailClick(kontak) },
+                ondeleteClick = {
+                    ondeleteClick(kontak)
+                }
+            )
+        }
+    }
+}
+
