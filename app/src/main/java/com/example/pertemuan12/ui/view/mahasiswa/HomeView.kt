@@ -125,3 +125,13 @@ fun HomeStatus(
     }
 }
 
+//The home Screen displaying the loading message
+@Composable
+fun OnLoading(modifier: Modifier = Modifier){
+    Image(
+        modifier = modifier.size(200.dp),
+        painter = painterResource(R.drawable.loading),
+        contentDescription = stringResource(R.string.loading)
+    )
+}
+
