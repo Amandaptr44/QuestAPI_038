@@ -94,3 +94,34 @@ fun HomeScreen(
 }
 
 
+@Composable
+fun HomeStatus(
+    homeUiState: HomeUiState,
+    retryAction: () -> Unit,
+    modifier: Modifier = Modifier,
+    ondeleteClick: (Mahasiswa) -> Unit,
+    ondetailClick: (String) -> Unit
+){
+    when (homeUiState){
+        is HomeUiState.Loading -> OnLoading(modifier = modifier.fillMaxSize())
+
+        is HomeUiState.Success ->
+            if (homeUiState.mahasiswa.isEmpty()){
+                return Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+                    Text(text = "Tidak ada data Kontak")
+                }
+            }else{
+                MhsLayout(
+                    mahasiswa = homeUiState.mahasiswa, modifier = modifier.fillMaxWidth(),
+                    ondetailClick = {
+                        ondetailClick(it.nim)
+                    },
+                    ondeleteClick = {
+                        ondeleteClick(it)
+                    }
+                )
+            }
+        is HomeUiState.Error -> OnError(retryAction, modifier = modifier.fillMaxSize())
+    }
+}
+
