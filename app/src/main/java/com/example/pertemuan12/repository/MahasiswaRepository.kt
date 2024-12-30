@@ -19,10 +19,12 @@ interface MahasiswaRepository{
             kontakApiService.insertMahasiswa(mahasiswa)
         }
 
-
         override suspend fun updateMahasiswa(nim: String, mahasiswa: Mahasiswa) {
             kontakApiService.updateMahasiswa(nim, mahasiswa)
         }
+
+        override suspend fun getMahasiswa(): List<Mahasiswa> =
+            kontakApiService.getAllMahasiswa()
 
         override suspend fun deleteMahasiswa(nim: String) {
             try {
@@ -38,10 +40,6 @@ interface MahasiswaRepository{
                 throw e
             }
         }
-
-        override suspend fun getMahasiswa(): List<Mahasiswa> =
-            kontakApiService.getAllMahasiswa()
-
 
         override suspend fun getMahasiswabyNim(nim: String): Mahasiswa {
             return kontakApiService.getMahasiswabyNim(nim)

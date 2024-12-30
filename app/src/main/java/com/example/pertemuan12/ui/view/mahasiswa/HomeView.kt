@@ -82,8 +82,10 @@ fun HomeScreen(
     ) { innerPadding ->
         HomeStatus(
             homeUiState = viewModel.mhsUIState,
-            retryAction = { viewModel.getMhs() }, modifier = Modifier.padding(innerPadding),
-            ondetailClick = ondetailClick, ondeleteClick = {
+            retryAction = { viewModel.getMhs() },
+            modifier = Modifier.padding(innerPadding),
+            ondetailClick = ondetailClick,
+            ondeleteClick = {
                 viewModel.deleteMhs(it.nim)
                 viewModel.getMhs()
             }

@@ -26,7 +26,7 @@ fun MahasiswaApp(
                 .fillMaxSize()
                 .padding(it)
         ) {
-            PengelolaHalaman()
+            PengelolaHalaman(modifier = Modifier)
         }
     }
 }
